@@ -6,7 +6,7 @@
 /*   By: drtaili <drtaili@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 18:56:00 by drtaili           #+#    #+#             */
-/*   Updated: 2023/08/30 21:05:04 by drtaili          ###   ########.fr       */
+/*   Updated: 2023/09/06 00:31:47 by drtaili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,11 @@ int main()
                 std::cout << "Enter index of the wanted contact down below :" << std::endl;
                 std::getline (std::cin,str);
             }
-            int index = std::stoi(str);
+            int index;
+            if (str.compare("0") == 0)
+                index = 0;
+            else
+                index = 9;
             phonebook.displayContactbyindex(index);
         }
         else if (str.compare("EXIT") == 0)

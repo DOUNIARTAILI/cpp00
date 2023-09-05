@@ -6,7 +6,7 @@
 /*   By: drtaili <drtaili@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 18:50:55 by drtaili           #+#    #+#             */
-/*   Updated: 2023/08/30 21:56:29 by drtaili          ###   ########.fr       */
+/*   Updated: 2023/09/06 00:33:49 by drtaili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,48 +75,37 @@ void Phonebook::addContact(void)
 void Phonebook::displayContacts(void)
 {
     int j = 0;
+    if (this->_contact[j].get_firstName().empty())
+        return ;
+    std::cout << std::setw(10) << std::right << "Index" << "|";
+    std::cout << std::setw(10) << std::right << "First Name" << "|";
+    std::cout << std::setw(10) << std::right << "Last Name" << "|";
+    std::cout << std::setw(10) << std::right << "NickName" << "|" << std::endl;
     while (j < 8)
     {
-        if (this->_contact[j].get_firstName().empty())
-            break;
-        std::cout << "     Index|" << this->nb << "|";
-        std::cout << "First Name|" << this->_contact[j].get_firstName() << "|";
-        std::cout << " Last Name|" << this->_contact[j].get_lastName() << "|";
-        std::cout << "  NickName|" << this->_contact[j].get_nickName();
+        if (!(this->_contact[j].get_firstName().empty())) 
+        {
+            std::cout << std::setw(10) << std::right << j << "|";
+            if (this->_contact[j].get_firstName().length() > 10)
+                std::cout << std::setw(10) << std::right << this->_contact[j].get_firstName().substr(0, 9).append(".") << "|";
+            else
+                std::cout << std::setw(10) << std::right << this->_contact[j].get_firstName().substr(0, 10) << "|";
+            if (this->_contact[j].get_lastName().length() > 10)
+                std::cout << std::setw(10) << std::right << this->_contact[j].get_lastName().substr(0, 9).append(".") << "|" ;
+            else
+                std::cout << std::setw(10) << std::right << this->_contact[j].get_lastName().substr(0, 10) << "|" ;
+            if (this->_contact[j].get_nickName().length() > 10)
+                std::cout << std::setw(10) << std::right << this->_contact[j].get_nickName().substr(0, 9).append(".") << "|" << std::endl;
+            else
+                std::cout << std::setw(10) << std::right << this->_contact[j].get_nickName().substr(0, 10) << "|" << std::endl;
+        }
         j++;
-    }
-}
-
-void print_word(std::string str)
-{
-    int i = 0;
-    int len = str.length();
-    while (i < len)
-    {
-        print10(str, i);
-        if (i++ < len)
-            std::cout << "."<< std::endl;
-        i++;
-    }
-}
-
-void print10(std::string str, int begin)
-{
-    while (begin < (begin + 9))
-    {
-        std::cout << str[begin];
-        begin++;
     }
 }
 
 void Phonebook::displayContactbyindex(int index)
 {
-    if (index > 7 || index < 0)
-    {
-        std::cout << "Contact doesn't exist !" << std::endl;
-        return ;       
-    } 
-    else if (this->_contact[index].get_firstName().empty())
+    if (this->_contact[index].get_firstName().empty())
     {
         std::cout << "Contact doesn't exist !" << std::endl;
         return ;
