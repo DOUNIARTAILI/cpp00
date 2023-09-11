@@ -6,13 +6,13 @@
 #    By: drtaili <drtaili@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/29 18:17:44 by drtaili           #+#    #+#              #
-#    Updated: 2023/08/30 15:57:22 by drtaili          ###   ########.fr        #
+#    Updated: 2023/09/11 18:00:46 by drtaili          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC = megaphone.cpp
 
-OBJS = $(SRC:.c=.o)
+OBJS = $(SRC:.cpp=.o)
 
 NAME = megaphone
 
@@ -28,12 +28,15 @@ all: $(NAME)
 $(NAME) : $(OBJS)
 	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
 
-%.o : %.c
+%.o : %.cpp
 	$(CC) $(FLAGS) -c $< -o $@
 
-fclean:
+clean:
+	$(RM) $(OBJS) 
+
+fclean: clean
 	$(RM) $(NAME)
 
 re: fclean $(NAME)
 
-.PHONY = all fclean re
+.PHONY = all clean fclean re

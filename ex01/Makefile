@@ -6,13 +6,13 @@
 #    By: drtaili <drtaili@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/30 17:03:39 by drtaili           #+#    #+#              #
-#    Updated: 2023/08/30 17:17:28 by drtaili          ###   ########.fr        #
+#    Updated: 2023/09/11 18:01:19 by drtaili          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC = main.cpp contact.cpp phonebook.cpp 
 
-OBJS = $(SRC:.c=.o)
+OBJS = $(SRC:.cpp=.o)
 
 NAME = phonebook
 HEADERS = contact.class.hpp phonebook.class.hpp
@@ -29,12 +29,15 @@ all: $(NAME)
 $(NAME) : $(OBJS) 
 	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
 
-%.o : %.c $(HEADERS)
+%.o : %.cpp $(HEADERS)
 	$(CC) $(FLAGS) -c $< -o $@
 
-fclean:
+clean:
+	$(RM) $(OBJS)
+	
+fclean: clean
 	$(RM) $(NAME)
 
 re: fclean $(NAME)
 
-.PHONY = all fclean re
+.PHONY = all clean fclean re
