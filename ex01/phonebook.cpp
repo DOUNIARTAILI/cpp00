@@ -6,7 +6,7 @@
 /*   By: drtaili <drtaili@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 18:50:55 by drtaili           #+#    #+#             */
-/*   Updated: 2023/09/28 11:53:42 by drtaili          ###   ########.fr       */
+/*   Updated: 2023/09/28 12:46:20 by drtaili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,17 +96,17 @@ void Phonebook::displayContacts(void)
         {
             std::cout << std::setw(10) << std::right << j << "|";
             if (this->_contact[j].get_firstName().length() > 10)
-                std::cout << std::setw(10) << std::right << this->_contact[j].get_firstName().substr(0, 9).append(".") << "|";
+                std::cout << this->_contact[j].get_firstName().substr(0, 9).append(".") << "|";
             else
-                std::cout << std::setw(10) << std::right << this->_contact[j].get_firstName().substr(0, 10) << "|";
+                std::cout << std::setw(10) << std::right << this->_contact[j].get_firstName() << "|";
             if (this->_contact[j].get_lastName().length() > 10)
-                std::cout << std::setw(10) << std::right << this->_contact[j].get_lastName().substr(0, 9).append(".") << "|" ;
+                std::cout << this->_contact[j].get_lastName().substr(0, 9).append(".") << "|" ;
             else
-                std::cout << std::setw(10) << std::right << this->_contact[j].get_lastName().substr(0, 10) << "|" ;
+                std::cout << std::setw(10) << std::right << this->_contact[j].get_lastName() << "|" ;
             if (this->_contact[j].get_nickName().length() > 10)
-                std::cout << std::setw(10) << std::right << this->_contact[j].get_nickName().substr(0, 9).append(".") << "|" << std::endl;
+                std::cout << this->_contact[j].get_nickName().substr(0, 9).append(".") << "|" << std::endl;
             else
-                std::cout << std::setw(10) << std::right << this->_contact[j].get_nickName().substr(0, 10) << "|" << std::endl;
+                std::cout << std::setw(10) << std::right << this->_contact[j].get_nickName() << "|" << std::endl;
         }
         j++;
     }
