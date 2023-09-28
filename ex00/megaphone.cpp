@@ -6,7 +6,7 @@
 /*   By: drtaili <drtaili@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 18:05:25 by drtaili           #+#    #+#             */
-/*   Updated: 2023/08/30 15:55:28 by drtaili          ###   ########.fr       */
+/*   Updated: 2023/09/28 09:54:23 by drtaili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ int main(int ac, char **av)
             }
             i++;
         }
+        std::cout << std::endl;
     }
     else
-        std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
+        std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
     return (0);
 }

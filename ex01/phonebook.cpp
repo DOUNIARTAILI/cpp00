@@ -6,11 +6,12 @@
 /*   By: drtaili <drtaili@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 18:50:55 by drtaili           #+#    #+#             */
-/*   Updated: 2023/09/06 00:33:49 by drtaili          ###   ########.fr       */
+/*   Updated: 2023/09/28 11:53:42 by drtaili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phonebook.class.hpp"
+#include "phonebook.hpp"
+#include <sstream>
 
 int Phonebook::nb = 0;
 
@@ -65,8 +66,16 @@ void Phonebook::addContact(void)
     {
         std::cout << "Enter Phone Number :" <<std::endl;
         std::getline (std::cin,str);
+        std::istringstream iss(str);
+        int phonenumber;
+        if (iss >> phonenumber)
+            contact.set_phoneNumber(str);
+        else
+        {
+            std::cout << "Invalid input. Please enter a valid integer phonenumber." << std::endl;
+            str.clear();
+        }
     }
-    contact.set_phoneNumber(str);
     str.clear();
     Phonebook::_contact[nb] = contact;
     nb++;
@@ -105,6 +114,11 @@ void Phonebook::displayContacts(void)
 
 void Phonebook::displayContactbyindex(int index)
 {
+    if (index < 0 || index > 7)
+    {
+        std::cout << "Contact doesn't exist !" << std::endl;
+        return ;
+    }
     if (this->_contact[index].get_firstName().empty())
     {
         std::cout << "Contact doesn't exist !" << std::endl;

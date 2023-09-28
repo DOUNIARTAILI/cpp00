@@ -6,7 +6,7 @@
 #    By: drtaili <drtaili@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/30 17:03:39 by drtaili           #+#    #+#              #
-#    Updated: 2023/09/11 18:01:19 by drtaili          ###   ########.fr        #
+#    Updated: 2023/09/28 10:15:11 by drtaili          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,13 @@ SRC = main.cpp contact.cpp phonebook.cpp
 OBJS = $(SRC:.cpp=.o)
 
 NAME = phonebook
-HEADERS = contact.class.hpp phonebook.class.hpp
+HEADERS = contact.hpp phonebook.hpp
 
-CC = g++ -fsanitize=address
+CC = c++
 
 RM = rm -rf
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -std=c++98
 
 
 all: $(NAME)

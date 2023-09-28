@@ -6,7 +6,7 @@
 #    By: drtaili <drtaili@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/29 18:17:44 by drtaili           #+#    #+#              #
-#    Updated: 2023/09/11 18:00:46 by drtaili          ###   ########.fr        #
+#    Updated: 2023/09/28 09:36:29 by drtaili          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,11 @@ OBJS = $(SRC:.cpp=.o)
 
 NAME = megaphone
 
-CC = g++
+CC = c++
 
 RM = rm -rf
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -std=c++98
 
 
 all: $(NAME)

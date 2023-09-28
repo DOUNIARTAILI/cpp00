@@ -6,14 +6,14 @@
 /*   By: drtaili <drtaili@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 18:56:00 by drtaili           #+#    #+#             */
-/*   Updated: 2023/09/06 00:31:47 by drtaili          ###   ########.fr       */
+/*   Updated: 2023/09/28 11:49:25 by drtaili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "contact.class.hpp"
-#include "phonebook.class.hpp"
-
+#include "contact.hpp"
+#include "phonebook.hpp"
+#include <sstream>
 int main()
 {
     Phonebook phonebook;
@@ -40,12 +40,12 @@ int main()
                 std::cout << "Enter index of the wanted contact down below :" << std::endl;
                 std::getline (std::cin,str);
             }
+            std::istringstream iss(str);
             int index;
-            if (str.compare("0") == 0)
-                index = 0;
+            if (iss >> index)
+                phonebook.displayContactbyindex(index);
             else
-                index = 9;
-            phonebook.displayContactbyindex(index);
+                std::cout << "Invalid input. Please enter a valid integer." << std::endl;
         }
         else if (str.compare("EXIT") == 0)
         {
